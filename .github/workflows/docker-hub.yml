@@ -18,7 +18,7 @@ env:
 
 jobs:
   build-and-push-backend:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
       -
         name: Checkout repository
@@ -54,7 +54,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   build-and-push-frontend:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
       -
         name: Checkout repository
@@ -93,7 +93,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   build-and-push-y-provider:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     steps:
       -
         name: Checkout repository
@@ -130,7 +130,7 @@ jobs:
     needs:
       - build-and-push-frontend
       - build-and-push-backend
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     if: github.event_name != 'pull_request' || contains(github.event.pull_request.labels.*.name, 'preview')
     steps:
       - uses: numerique-gouv/action-argocd-webhook-notification@main

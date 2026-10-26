@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   comment:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     if: contains(github.event.pull_request.labels.*.name, 'preview')
     steps:
       - uses: thollander/actions-comment-pull-request@v3
